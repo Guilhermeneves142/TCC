@@ -1,0 +1,27 @@
+{
+	"Template tags": {
+    "prefix": "vtemplate",
+    "body": ["<template>$1</template>"],
+    "description": "xana"
+  },
+  "Vue class": {
+    "prefix": "vbase-ts",
+    "body": [
+      "<template>",
+      "\t<div></div>",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "import { Component, Vue } from 'vue-property-decorator'" ,
+      "@Component({})",
+      "export default class ${0} extends Vue {",
+      "\t//Data",
+      "\t//Method",
+      "}",
+      "</script>",
+      "",
+      "<style lang='scss'></style>",
+      ""
+    ]
+  }
+}

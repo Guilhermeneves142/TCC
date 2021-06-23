@@ -1,0 +1,32 @@
+{
+  "eslint.validate": [
+    "vue",
+    "html",
+    "javascript",
+    "typescript"
+  ],
+  "eslint.alwaysShowStatus": true,
+  "editor.tabSize": 2,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 8,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#000000",
+    "activityBar.activeBorder": "#24a018",
+    "activityBar.background": "#222222",
+    "activityBar.foreground": "#f1f9ff",
+    "activityBar.inactiveForeground": "#24a018",
+    "activityBarBadge.background": "#000203",
+    "activityBarBadge.foreground": "#27c2ff",
+    "statusBar.background": "#1a1a1a",
+    "statusBar.foreground": "#27c2ff",
+    "statusBarItem.hoverBackground": "#f3f3f3",
+    "titleBar.activeBackground": "#0f0beb",
+    "titleBar.activeForeground": "#ff0000",
+    "titleBar.inactiveBackground": "#3c996f99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#42b883"
+}
