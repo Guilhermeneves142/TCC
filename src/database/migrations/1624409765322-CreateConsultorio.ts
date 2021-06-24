@@ -13,7 +13,7 @@ export class CreateConsultorio1624409765322 implements MigrationInterface {
             isPrimary: true
           },
           {
-            name: "name",
+            name: "nome",
             type: "varchar",
             isNullable: false
           },
@@ -29,7 +29,8 @@ export class CreateConsultorio1624409765322 implements MigrationInterface {
           },
           {
             name: "celular",
-            type: "varchar" 
+            type: "varchar",
+            isNullable: true
           }
           ]
         }
