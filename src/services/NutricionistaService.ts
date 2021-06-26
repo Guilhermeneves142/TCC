@@ -1,6 +1,7 @@
 import { getCustomRepository } from "typeorm";
 import { Consultorio } from "../entities/Consultorio";
 import { NutricionistaRepository } from "../repositories/NutricionistaRepository";
+import {hash} from "bcryptjs";
 
 interface NutricionistaCreate {
   nome: string;
@@ -28,7 +29,11 @@ class NutricionistaService {
 
     if(nutricionistaAlreadyExists)
       throw new Error("Nutricionista already exists");
-    
+
+    const passwordHash = await hash(nutricionista.senha,8);
+
+    nutricionista.senha = passwordHash;
+
     const newNutricionista = nutricionistaRepository.create(nutricionista);
 
     await nutricionistaRepository.save(newNutricionista);
