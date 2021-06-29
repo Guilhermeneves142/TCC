@@ -1,37 +1,11 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner} from "typeorm";
 
 export class CreateAtendimento1624669185647 implements MigrationInterface {
 
-  public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.createTable(
-      new Table({
-        name: "atendimento",
-        columns: [
-          {
-            name: "id",
-            type: "uuid",
-            isPrimary: true
-          },
-          {
-            name: "id_paciente",
-            type: "uuid"
-          },
-          {
-            name: "id_plano_alimentar",
-            type: "uuid"
-          },
-          {
-            name: "data_atendimento",
-            type: "timestamp",
-            default: "now()"
-          }
-        ]
-      })
-    )
-  }
+    public async up(queryRunner: QueryRunner): Promise<void> {
+    }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("atendimento");
-  }
+    public async down(queryRunner: QueryRunner): Promise<void> {
+    }
 
 }

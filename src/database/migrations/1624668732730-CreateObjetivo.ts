@@ -13,7 +13,7 @@ export class CreateObjetivo1624668732730 implements MigrationInterface {
             isPrimary: true
           },
           {
-            name: "id_consultorio",
+            name: "id_nutricionista",
             type: "uuid"
           },
           {
@@ -28,8 +28,8 @@ export class CreateObjetivo1624668732730 implements MigrationInterface {
           foreignKeys: [
             {
               name: "fk_nutricionista_id",
-              columnNames: ['id_consultorio'],
-              referencedTableName: 'consultorio',
+              columnNames: ['id_nutricionista'],
+              referencedTableName: 'nutricionista',
               referencedColumnNames: ['id'],
               onDelete: "SET NULL"
             }
