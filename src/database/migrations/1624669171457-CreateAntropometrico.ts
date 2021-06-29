@@ -1,5 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
+
 export class CreateAntropometrico1624669171457 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {

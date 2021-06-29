@@ -1,3 +1,4 @@
+
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class CreateAlimentoRefeicao1624668995732 implements MigrationInterface {

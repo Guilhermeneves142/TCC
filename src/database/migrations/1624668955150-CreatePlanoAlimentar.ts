@@ -1,3 +1,4 @@
+
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class CreatePlanoAlimentar1624668955150 implements MigrationInterface {
