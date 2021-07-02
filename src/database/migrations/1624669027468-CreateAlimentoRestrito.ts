@@ -9,11 +9,13 @@ export class CreateAlimentoRestrito1624669027468 implements MigrationInterface {
                     columns: [
                     {
                         name: "id_doenca",
-                        type: "uuid"
+                        type: "uuid", 
+                        isPrimary: true
                     },
                     {
                         name: "id_alimento",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     }
                     ]
             })

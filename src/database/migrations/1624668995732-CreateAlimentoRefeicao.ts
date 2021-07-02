@@ -10,11 +10,13 @@ export class CreateAlimentoRefeicao1624668995732 implements MigrationInterface {
                     columns: [
                     {
                         name: "id_plano_alimentar_refeicao",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "id_alimento",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     }
                     ]
             })

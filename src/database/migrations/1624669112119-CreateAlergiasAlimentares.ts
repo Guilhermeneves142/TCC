@@ -9,11 +9,13 @@ export class CreateAlergiasAlimentares1624669112119 implements MigrationInterfac
                     columns: [
                     {
                         name: "id_anamneses",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "id_alimento",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "tipo",
