@@ -9,11 +9,13 @@ export class CreateObjetivoPaciente1624668924682 implements MigrationInterface {
           columns: [
           {
             name: "id_objetivo",
-            type: "uuid"
+            type: "uuid",
+            isPrimary: true
           },
           {
             name: "id_paciente",
-            type: "uuid"
+            type: "uuid",
+            isPrimary: true
           },
           ],
           foreignKeys: [

@@ -9,11 +9,13 @@ export class CreatePatologia1624669129934 implements MigrationInterface {
                     columns: [
                     {
                         name: "id_anamneses",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     },
                     {
                         name: "id_doenca",
-                        type: "uuid"
+                        type: "uuid",
+                        isPrimary: true
                     }
                     ]
             })
