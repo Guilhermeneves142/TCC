@@ -19,7 +19,7 @@ export class CreatePaciente1624668721585 implements MigrationInterface {
           },
           {
             name: "id_consultorio",
-            type: "varchar",
+            type: "uuid",
             isNullable: false
           },
           {
