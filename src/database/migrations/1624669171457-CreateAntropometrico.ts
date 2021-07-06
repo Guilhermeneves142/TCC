@@ -14,10 +14,6 @@ export class CreateAntropometrico1624669171457 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "id_alimento",
-                        type: "uuid"
-                    },
-                    {
                         name: "data",
                         type: "timestamp"
                     },
@@ -108,7 +104,7 @@ export class CreateAntropometrico1624669171457 implements MigrationInterface {
                         isNullable: true
                     },
                     {
-                        name: "massa gorda",
+                        name: "massa_gorda",
                         type: "numeric",
                         isNullable: true
                     },

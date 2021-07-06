@@ -45,7 +45,7 @@ export class CreateAnamneses1624669155393 implements MigrationInterface {
             type: "varchar"
           },
           {
-            name: "mastigação",
+            name: "mastigacao",
             type: "varchar"
           },
           {
