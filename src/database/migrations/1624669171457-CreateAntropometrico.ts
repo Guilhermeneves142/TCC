@@ -14,6 +14,10 @@ export class CreateAntropometrico1624669171457 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
+                        name: "id_paciente",
+                        type: "uuid",
+                    },
+                    {
                         name: "data",
                         type: "timestamp"
                     },
@@ -128,6 +132,15 @@ export class CreateAntropometrico1624669171457 implements MigrationInterface {
                         type: "numeric",
                         isNullable: true
                     }
+                    ],
+                    foreignKeys: [
+                        {
+                            name: "FKPaciente",
+                            columnNames: ["id_paciente"],
+                            referencedColumnNames: ["id"],
+                            referencedTableName: "paciente",
+                            onDelete: "SET NULL"
+                          }
                     ]
             })
         )

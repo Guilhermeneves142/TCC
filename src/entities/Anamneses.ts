@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Atendimento } from "./Atendimento";
 
@@ -7,7 +7,7 @@ class Anamneses {
   @PrimaryColumn()
   readonly id: string;
   @JoinColumn({ name: 'id_atendimento' })
-  @ManyToOne(() => null)
+  @OneToOne(() => Atendimento, () => Anamneses)
   atendimento: Atendimento;
   @Column()
   data: Date;

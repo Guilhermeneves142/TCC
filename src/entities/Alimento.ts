@@ -7,7 +7,7 @@ class Alimento {
     @PrimaryColumn()
     readonly id: string;
     @JoinColumn({ name: 'id_consultorio' })
-    @ManyToOne(() => null)
+    @ManyToOne(() => Consultorio)
     consultorio: Consultorio;
     @Column()
     nome: string;

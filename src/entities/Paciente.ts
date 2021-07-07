@@ -1,6 +1,8 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Antropometrico } from "./Antropometrico";
 import { Consultorio } from "./Consultorio";
+import { Objetivo } from "./Objetivo";
 import { Responsavel } from "./Responsavel";
 
 @Entity("paciente")
@@ -8,11 +10,16 @@ class Paciente {
     @PrimaryColumn()
     readonly id: string;
     @JoinColumn({ name: 'id_consultorio' })
-    @ManyToOne(() => null)
-    responsavel: Responsavel;
-    @JoinColumn({ name: 'id_responsavel' })
-    @ManyToOne(() => null)
+    @ManyToOne(() => Consultorio)
     consultorio: Consultorio;
+    @JoinColumn({ name: 'id_responsavel' })
+    @ManyToOne(() => Responsavel)
+    responsavel: Responsavel;
+    @OneToOne(() => Antropometrico, () => Paciente)
+    antropometrico: Antropometrico
+    @ManyToMany(() => Objetivo)
+    @JoinTable()
+    objetivos: Objetivo[];
     @Column()
     nome: string;
     @Column()

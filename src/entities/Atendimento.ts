@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Anamneses } from "./Anamneses";
 import { Paciente } from "./Paciente";
 import { PlanoAlimentar } from "./PlanoAlimentar";
 
@@ -7,11 +8,13 @@ import { PlanoAlimentar } from "./PlanoAlimentar";
 class Atendimento {
   @PrimaryColumn()
   readonly id: string;
+  @OneToOne(() => Anamneses, () => Atendimento)
+  anamneses: Anamneses
   @JoinColumn({ name: 'id_paciente' })
-  @ManyToOne(() => null)
+  @ManyToOne(() => Paciente)
   paciente: Paciente;
   @JoinColumn({ name: 'id_plano_alimentar' })
-  @ManyToOne(() => null)
+  @ManyToOne(() => PlanoAlimentar)
   planoAlimentar: PlanoAlimentar;
   @Column({name:"data_atendimento"})
   dataAtendimento: Date;
