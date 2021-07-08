@@ -2,22 +2,11 @@ import { getCustomRepository } from "typeorm";
 import { Consultorio } from "../entities/Consultorio";
 import { NutricionistaRepository } from "../repositories/NutricionistaRepository";
 import {hash} from "bcryptjs";
-
-interface NutricionistaCreate {
-  nome: string;
-  cpf: string;
-  crn: string;
-  senha: string;
-  consultorio?: Consultorio
-  email?: string;
-  celular?: string;
-  inicioExpediente?: Date;
-  fimExpediente?: Date;
-}
+import { Nutricionista } from "../entities/Nutricionista";
 
 class NutricionistaService {
 
-  async createNutricionista(nutricionista: NutricionistaCreate){
+  async createNutricionista(nutricionista: Nutricionista){
     
     const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
 
