@@ -5,13 +5,21 @@ import { AuthenticateService } from "../services/AuthenticateService";
 class AuthenticateController {
 
   async login(request: Request, response: Response){
-    const {email,cpf,senha} = request.body;
+    const {usuario,senha} = request.body;
 
     const authenticateService = new AuthenticateService();
 
-    const token = await authenticateService.login({email,cpf,senha})
+    try {   
+      const token = await authenticateService.login({usuario,senha})
 
-    return response.json({token})
+      return response.json({token})
+      }
+    catch (error) {
+      return response.status(500).json({
+        error: "internal server error",
+        status: 500
+      }) 
+    }
   }
 }
 

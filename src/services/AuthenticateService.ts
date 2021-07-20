@@ -4,8 +4,7 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
 interface IAuthenticateRequest {
-  cpf: string;
-  email: string;
+  usuario: string;
   senha: string;
 }
 
@@ -15,12 +14,11 @@ class AuthenticateService {
     const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
     
     //verify email or cpf exists
-    let nutricionista;
-    if(login.cpf)
-    nutricionista = await nutricionistaRepository.findOne({cpf:login.cpf});
-    else if(login.email)
-    nutricionista = await nutricionistaRepository.findOne({email:login.email});
-    else throw Error("email or cpf incorrect");
+    let nutricionista = await nutricionistaRepository.findOne({cpf:login.usuario});
+    if (!nutricionista)
+    nutricionista = await nutricionistaRepository.findOne({email:login.usuario});
+    if(!nutricionista)
+    throw Error("email or cpf incorrect");
 
     const passwordMatch = await compare(login.senha,nutricionista.senha);
 
