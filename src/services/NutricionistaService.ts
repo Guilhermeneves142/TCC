@@ -12,12 +12,12 @@ class NutricionistaService {
 
 
     if(!nutricionista.cpf || !nutricionista.crn || !nutricionista.nome || !nutricionista.senha)
-      throw new Error("Required fields are empty");
+      throw new Error("Campos obrigatórios estão vázios");
 
     const nutricionistaAlreadyExists = await nutricionistaRepository.findOne({cpf:nutricionista.cpf});
 
     if(nutricionistaAlreadyExists)
-      throw new Error("Nutricionista already exists");
+      throw new Error("Já existe um nutricionista cadastrado com esses dados");
 
     const passwordHash = await hash(nutricionista.senha,8);
 

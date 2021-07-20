@@ -4,9 +4,16 @@ import { NutricionistaService } from "../services/NutricionistaService";
 class NutricionistaController {
 
   async createNutricionista(request: Request, response: Response) {
-    const nutricionistaService = new NutricionistaService();
-    const consultorio = await nutricionistaService.createNutricionista(request.body);
-    return response.json(consultorio);
+    try {
+      const nutricionistaService = new NutricionistaService();
+      const consultorio = await nutricionistaService.createNutricionista(request.body);
+      return response.json(consultorio); 
+    } catch (error) {
+      return response.status(500).json({
+        error:error.message,
+        status: 500
+      }) 
+    }
   }
 
   async findAll(request: Request, response: Response) {
