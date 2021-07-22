@@ -10,6 +10,7 @@ const nutricionistaController = new NutricionistaController();
 const authenticateController = new AuthenticateController();
 
 router.post("/login",authenticateController.login);
+router.get("/clarify",authenticateController.clarifyToken);
 router.post("/consultorio/create", consultorioController.createConsultorio)
 router.get("/consultorio/findAll", consultorioController.findAll)
 router.post("/nutricionista/create", nutricionistaController.createNutricionista)

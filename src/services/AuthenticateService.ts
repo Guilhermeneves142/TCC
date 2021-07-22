@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm"
 import { NutricionistaRepository } from "../repositories/NutricionistaRepository"
 import { compare } from "bcryptjs";
-import { sign } from "jsonwebtoken";
+import { sign, decode } from "jsonwebtoken";
 
 interface IAuthenticateRequest {
   usuario: string;
@@ -26,7 +26,8 @@ class AuthenticateService {
 
     const token = sign(
       {
-        consultorio: nutricionista.consultorio?.nome ?? null
+        consultorio: nutricionista.consultorio?.nome ?? null,
+        nome: nutricionista.nome
       }, 
         "69a80d081c6b251a81dab43a2bae95ee", 
       {
@@ -35,6 +36,10 @@ class AuthenticateService {
       }
     )
     return token;
+  }
+
+  async clarifyToken(token: string) {
+    return decode(token);
   }
 }
 

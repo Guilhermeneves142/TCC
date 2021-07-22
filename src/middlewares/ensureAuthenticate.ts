@@ -13,10 +13,8 @@ export function ensureAuthenticate(request: Request, response: Response, next: N
   //validar se o token esta preenchido
   if(!authToken) return response.status(401).end();
 
-  const [,token] = authToken.split(" ");
-
   try {
-    const {sub} = verify(token,"69a80d081c6b251a81dab43a2bae95ee") as IPayload;
+    const {sub} = verify(authToken,"69a80d081c6b251a81dab43a2bae95ee") as IPayload;
 
     request.user_id = sub;
 
