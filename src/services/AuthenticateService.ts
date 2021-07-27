@@ -26,7 +26,7 @@ class AuthenticateService {
 
     const token = sign(
       {
-        consultorio: nutricionista.consultorio?.nome ?? null,
+        consultorio: nutricionista.consultorio ?? null,
         nome: nutricionista.nome
       }, 
         "69a80d081c6b251a81dab43a2bae95ee", 
@@ -35,7 +35,7 @@ class AuthenticateService {
         subject: nutricionista.id.toString()
       }
     )
-    return token;
+    return {token , hasConsultorio: !!nutricionista.consultorio} ;
   }
 
   async clarifyToken(token: string) {

@@ -3,6 +3,7 @@ import { Consultorio } from "../entities/Consultorio";
 import { NutricionistaRepository } from "../repositories/NutricionistaRepository";
 import {hash} from "bcryptjs";
 import { Nutricionista } from "../entities/Nutricionista";
+import { ConsultorioRepository } from "../repositories/ConsultorioRepository";
 
 class NutricionistaService {
 
@@ -28,6 +29,20 @@ class NutricionistaService {
     await nutricionistaRepository.save(newNutricionista);
 
     return newNutricionista;
+  }
+
+  async setConsultorio(idNutricionista: string, idConsultorio: string){
+    const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
+    const consultorioRepository = getCustomRepository(ConsultorioRepository);
+    const nutricionista = await nutricionistaRepository.findOne(idNutricionista);
+    const consultorio = await consultorioRepository.findOne(idConsultorio);
+
+    nutricionista.consultorio = consultorio;
+    
+    const updateNutricionista = nutricionistaRepository.create(nutricionista);
+    await nutricionistaRepository.save(updateNutricionista);
+
+    return updateNutricionista;
   }
 
   async findAll(){

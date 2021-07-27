@@ -1,13 +1,16 @@
 import { Request, Response} from "express";
 import { ConsultorioService } from "../services/ConsultorioService";
+import { NutricionistaService } from "../services/NutricionistaService";
 
 class ConsultorioController {
 
   async createConsultorio(request: Request, response: Response) {
-    const { nome, telefone, endereco, celular} = request.body;
+    const { consultorio, idNutricionista} = request.body;
     const consultorioService = new ConsultorioService();
-      const consultorio = await consultorioService.createConsultorio({nome, telefone, endereco, celular});
-      return response.json(consultorio);
+    const nutricionistaService = new NutricionistaService();
+    const consultorioCreated = await consultorioService.createConsultorio(consultorio);
+    nutricionistaService.setConsultorio(idNutricionista, consultorio.id);
+    return response.json(consultorioCreated);
   }
 
   async findAll(request: Request, response: Response) {

@@ -12,7 +12,7 @@ class AuthenticateController {
     try {   
       const token = await authenticateService.login({usuario,senha})
 
-      return response.json({token})
+      return response.json(token)
       }
     catch (error) {
       return response.status(500).json({
