@@ -14,9 +14,9 @@ class AuthenticateService {
     const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
     
     //verify email or cpf exists
-    let nutricionista = await nutricionistaRepository.findOne({cpf:login.usuario});
+    let nutricionista = await nutricionistaRepository.findOne({cpf:login.usuario},{relations: ["consultorio"]});
     if (!nutricionista)
-    nutricionista = await nutricionistaRepository.findOne({email:login.usuario});
+    nutricionista = await nutricionistaRepository.findOne({email:login.usuario},{relations: ["consultorio"]});
     if(!nutricionista)
     throw Error("email or cpf incorrect");
 

@@ -1,5 +1,6 @@
-import {Column, Entity, PrimaryColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryColumn} from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Nutricionista } from "./Nutricionista";
 
 @Entity("consultorio")
 class Consultorio {
@@ -13,6 +14,8 @@ class Consultorio {
   endereco: string;
   @Column()
   celular: string;
+  @OneToMany(() => Nutricionista, nutricionista => nutricionista.consultorio)
+  nutricionista: Nutricionista[];
 
   constructor() {
     if(!this.id){
