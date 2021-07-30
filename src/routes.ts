@@ -15,5 +15,6 @@ router.post("/consultorio/create", consultorioController.createConsultorio)
 router.get("/consultorio/findAll", consultorioController.findAll)
 router.post("/nutricionista/create", nutricionistaController.createNutricionista)
 router.get("/nutricionista/findAll", nutricionistaController.findAll)
+router.get("/nutricionista/findById/:idNutricionista", nutricionistaController.findById)
 
 export {router};

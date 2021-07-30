@@ -15,8 +15,10 @@ class AuthenticateService {
     
     //verify email or cpf exists
     let nutricionista = await nutricionistaRepository.findOne({cpf:login.usuario},{relations: ["consultorio"]});
+
     if (!nutricionista)
     nutricionista = await nutricionistaRepository.findOne({email:login.usuario},{relations: ["consultorio"]});
+
     if(!nutricionista)
     throw Error("email or cpf incorrect");
 
@@ -27,7 +29,8 @@ class AuthenticateService {
     const token = sign(
       {
         consultorio: nutricionista.consultorio ?? null,
-        nome: nutricionista.nome
+        nome: nutricionista.nome,
+        idNutricionista: nutricionista.id
       }, 
         "69a80d081c6b251a81dab43a2bae95ee", 
       {

@@ -48,9 +48,15 @@ class NutricionistaService {
   async findAll(){
     const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
 
-    const nutricionistas = await nutricionistaRepository.createQueryBuilder("nutricionista").leftJoinAndSelect("nutricionista.consultorio", "consultorio")
-    .getMany();
+    const nutricionistas = await nutricionistaRepository.find({relations: ["consultorio"]});
     return nutricionistas;
+  }
+
+  async findById(id: string) {
+    const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
+
+    const nutricionista = await nutricionistaRepository.findOne({id},{relations: ["consultorio"]});
+    return nutricionista;
   }
 }
 

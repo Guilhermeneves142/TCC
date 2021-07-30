@@ -19,8 +19,16 @@ class NutricionistaController {
   async findAll(request: Request, response: Response) {
     const nutricionistaService = new NutricionistaService();
 
-    const consultorio = await nutricionistaService.findAll();
-    return response.json(consultorio);
+    const nutricionistas = await nutricionistaService.findAll();
+    return response.json(nutricionistas);
+  }
+
+  async findById(request: Request, response: Response) {
+    const idNutricionista = request.params.idNutricionista;
+    const nutricionistaService = new NutricionistaService();
+
+    const nutricionista = await nutricionistaService.findById(idNutricionista);
+    return response.json(nutricionista);
   }
 }
 
