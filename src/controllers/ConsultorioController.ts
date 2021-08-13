@@ -19,6 +19,21 @@ class ConsultorioController {
     const consultorio = await consultorioService.findAll();
     return response.json(consultorio);
   }
+
+  async bindNutricionistaWithCOnsultorio(request: Request, response: Response){
+    try {
+      const { idConsultorio, idNutricionista} = request.body;
+      const consultorioService = new ConsultorioService();
+      var nutricionista = await consultorioService.bindNutricionistaWithConsultorio(idNutricionista,idConsultorio);
+  
+      return response.json(nutricionista);
+    } catch (error) {
+      return response.status(500).json({
+        error:error.message,
+        status: 500
+      }) 
+    }
+  }
 }
 
 export { ConsultorioController };

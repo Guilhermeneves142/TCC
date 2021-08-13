@@ -1,5 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { ConsultorioRepository } from "../repositories/ConsultorioRepository";
+import { NutricionistaRepository } from "../repositories/NutricionistaRepository";
 
 interface IUserRequest {
   nome: string;
@@ -36,6 +37,20 @@ class ConsultorioService {
     const consultorios = await consultorioRepository.find();
 
     return consultorios;
+  }
+
+  async bindNutricionistaWithConsultorio(idNutricionista, idConsultorio) {
+    const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
+    const consultorioRepository = getCustomRepository(ConsultorioRepository);
+
+    var nutricionista = await nutricionistaRepository.findOne(idNutricionista);
+    var consultorio = await consultorioRepository.findOne(idConsultorio);
+    nutricionista.consultorio = consultorio;
+
+    var nutricionistaWithConsultorio = nutricionistaRepository.create(nutricionista);
+    nutricionistaRepository.save(nutricionistaWithConsultorio);
+
+    return nutricionistaWithConsultorio;
   }
 }
 

@@ -38,7 +38,11 @@ class AuthenticateService {
         subject: nutricionista.id.toString()
       }
     )
-    return {token , hasConsultorio: !!nutricionista.consultorio} ;
+    return {token , hasConsultorio: !!nutricionista.consultorio, data:      {
+      consultorio: nutricionista.consultorio ?? null,
+      nome: nutricionista.nome,
+      idNutricionista: nutricionista.id
+    }} ;
   }
 
   async clarifyToken(token: string) {
