@@ -7,9 +7,7 @@ class ObjetivoService {
   async findAll(){
     const objetivoRepository = getCustomRepository(ObjetivoRepository);
 
-    const objetivo = await objetivoRepository.find();
-
-    return objetivo;
+    return objetivoRepository.find();
   }
 
   async create(objetivo: Objetivo) {
@@ -22,8 +20,7 @@ class ObjetivoService {
 
   async findById(id: string){
     const objetivoRepository = getCustomRepository(ObjetivoRepository);
-    const objetivo = objetivoRepository.findOne(id);
-    return objetivo;
+    return objetivoRepository.findOne(id);
   }
 }
 

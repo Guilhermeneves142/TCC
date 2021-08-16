@@ -1,5 +1,4 @@
 import { getCustomRepository } from "typeorm";
-import { Consultorio } from "../entities/Consultorio";
 import { NutricionistaRepository } from "../repositories/NutricionistaRepository";
 import {hash} from "bcryptjs";
 import { Nutricionista } from "../entities/Nutricionista";
@@ -48,15 +47,13 @@ class NutricionistaService {
   async findAll(){
     const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
 
-    const nutricionistas = await nutricionistaRepository.find({relations: ["consultorio"]});
-    return nutricionistas;
+    return nutricionistaRepository.find({relations: ["consultorio"]});
   }
 
   async findById(id: string) {
     const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
 
-    const nutricionista = await nutricionistaRepository.findOne({id},{relations: ["consultorio"]});
-    return nutricionista;
+    return nutricionistaRepository.findOne({id},{relations: ["consultorio"]});
   }
 }
 

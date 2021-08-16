@@ -1,4 +1,5 @@
 import { getCustomRepository } from "typeorm";
+import { Refeicao } from "../entities/Refeicao";
 import { RefeicaoRepository } from "../repositories/RefeicaoRepository";
 
 class RefeicaoService {
@@ -6,9 +7,17 @@ class RefeicaoService {
   async findAll(){
     const refeicaoRepository = getCustomRepository(RefeicaoRepository);
 
-    const refeicao = await refeicaoRepository.find();
+    return refeicaoRepository.find();
+  }
 
-    return refeicao;
+  async createRefeicao(refeicao: Refeicao) {
+    const refeicaoRepository = getCustomRepository(RefeicaoRepository);
+    
+    const newRefeicao = refeicaoRepository.create(refeicao);
+
+    await refeicaoRepository.save(newRefeicao);
+
+    return newRefeicao;
   }
 }
 

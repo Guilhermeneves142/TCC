@@ -31,26 +31,43 @@ const planoAlimentarController = new PlanoAlimentarController();
 const refeicaoController = new RefeicaoController();
 const responsavelController = new ResponsavelController();
 
+// AUTHENTICAÇÃO
 router.post("/login",authenticateController.login);
 router.get("/clarify",authenticateController.clarifyToken);
-router.post("/consultorio/create", consultorioController.createConsultorio)
+// CONSULTORIO
+router.post("/consultorio", consultorioController.createConsultorio)
 router.get("/consultorio/findAll", consultorioController.findAll)
-router.post("/nutricionista/create", nutricionistaController.createNutricionista)
+// NUTRICIONISTA
+router.post("/nutricionista", nutricionistaController.createNutricionista)
 router.get("/nutricionista/findAll", nutricionistaController.findAll)
 router.get("/nutricionista/findById/:idNutricionista", nutricionistaController.findById)
 router.post("/nutricionista/bindConsultorio", consultorioController.bindNutricionistaWithCOnsultorio)
+// ALIMENTO
+router.post("/alimento",alimentoController.createAlimento)
 router.get("/alimento/findAll", alimentoController.findAll)
+// ANAMNESES
 router.get("/anamneses/findAll", anamnesesController.findAll)
+// ANTROPOMETRICO
 router.get("/antropometrico/findAll", antropometricoController.findAll)
+//ATENDIMENTO
 router.get("/atendimento/findAll", atendimentoController.findAll)
+//DOENCA
+router.post("/doenca", doencaController.createDoenca)
 router.get("/doenca/findAll", doencaController.findAll)
+//EXAME
 router.get("/exame/findAll", exameController.findAll)
+//OBJETIVO
 router.get("/objetivo/findAll", objetivoController.findAll)
 router.get("/objetivo/:idObjetivo",objetivoController.findById)
 router.post("/objetivo",objetivoController.createObjetivo)
+//PACIENTE
 router.get("/paciente/findAll", pacienteController.findAll)
+//PLANO ALIMENTAR
 router.get("/planoAlimentar/findAll", planoAlimentarController.findAll)
+//REFEICAO
 router.get("/refeicao/findAll", refeicaoController.findAll)
+router.get("/refeicao", refeicaoController.createRefeicao)
+//RESPONSAVEL
 router.get("/responsavel/findAll", responsavelController.findAll)
 
 export {router};

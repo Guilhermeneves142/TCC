@@ -9,6 +9,19 @@ class AlimentoController {
     const alimentos = await alimentoService.findAll();
     return response.json(alimentos);
   }
+
+  async createAlimento(request: Request, response: Response) {
+    try {
+      const alimentoService = new AlimentoService();
+      const alimento = await alimentoService.create(request.body);
+      return response.json(alimento); 
+    } catch (error) {
+      return response.status(500).json({
+        error:error.message,
+        status: 500
+      }) 
+    }
+  }
 }
 
 export { AlimentoController };

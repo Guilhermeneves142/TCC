@@ -1,4 +1,5 @@
 import { getCustomRepository } from "typeorm";
+import { Doenca } from "../entities/Doenca";
 import { DoencaRepository } from "../repositories/DoencaRepository";
 
 class DoencaService {
@@ -6,9 +7,17 @@ class DoencaService {
   async findAll(){
     const doencaRepository = getCustomRepository(DoencaRepository);
 
-    const doenca = await doencaRepository.find();
+    return doencaRepository.find();
+  }
 
-    return doenca;
+  async createDoenca(doenca: Doenca) {
+    const doencaRepository = getCustomRepository(DoencaRepository);
+
+    const newDoenca = doencaRepository.create(doenca);
+
+    await doencaRepository.save(newDoenca);
+    
+    return newDoenca;
   }
 }
 

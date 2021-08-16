@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Alimento } from "./Alimento";
 import { Consultorio } from "./Consultorio";
 
 @Entity("doenca")
@@ -9,6 +10,9 @@ class Doenca {
     @JoinColumn({ name: 'id_consultorio' })
     @ManyToOne(() => Consultorio)
     consultorio: Consultorio;
+    @ManyToMany(() => Alimento, () => Doenca)
+    @JoinTable()
+    alimentos: Alimento[];
     @Column()
     nome: string;
     @Column()

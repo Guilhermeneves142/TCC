@@ -1,4 +1,5 @@
 import { getCustomRepository } from "typeorm";
+import { Alimento } from "../entities/Alimento";
 import { AlimentoRepository } from "../repositories/AlimentoRepository";
 
 class AlimentoService {
@@ -6,9 +7,17 @@ class AlimentoService {
   async findAll(){
     const alimentoRepository = getCustomRepository(AlimentoRepository);
 
-    const alimentos = await alimentoRepository.find();
+    return alimentoRepository.find();
+  }
 
-    return alimentos;
+  async create(alimento: Alimento) {
+    const alimentoRepository = getCustomRepository(AlimentoRepository);
+
+    const newAlimento = alimentoRepository.create(alimento);
+
+    await alimentoRepository.save(newAlimento);
+
+    return newAlimento;
   }
 }
 
