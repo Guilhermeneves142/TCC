@@ -6,7 +6,7 @@ class AlimentoController {
   async findAll(request: Request, response: Response) {
     const alimentoService = new AlimentoService();
 
-    const alimentos = await alimentoService.findAll();
+    const alimentos = await alimentoService.findAll(request.headers.authorization);
     return response.json(alimentos);
   }
 

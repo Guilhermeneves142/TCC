@@ -34,9 +34,7 @@ class ConsultorioService {
   async findAll(){
     const consultorioRepository = getCustomRepository(ConsultorioRepository);
 
-    const consultorios = await consultorioRepository.find();
-
-    return consultorios;
+    return consultorioRepository.find();
   }
 
   async bindNutricionistaWithConsultorio(idNutricionista, idConsultorio) {

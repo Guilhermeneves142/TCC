@@ -13,6 +13,7 @@ import { PacienteController } from "./controllers/PacienteController";
 import { PlanoAlimentarController } from "./controllers/PlanoAlimentarController";
 import { RefeicaoController } from "./controllers/RefeicaoController";
 import { ResponsavelController } from "./controllers/ResponsavelController";
+import { ensureAuthenticate } from "./middlewares/ensureAuthenticate";
 
 
 const router = Router();
@@ -33,6 +34,8 @@ const responsavelController = new ResponsavelController();
 
 // AUTHENTICAÇÃO
 router.post("/login",authenticateController.login);
+router.use(ensureAuthenticate)
+
 router.get("/clarify",authenticateController.clarifyToken);
 // CONSULTORIO
 router.post("/consultorio", consultorioController.createConsultorio)
