@@ -14,9 +14,9 @@ export function ensureAuthenticate(request: Request, response: Response, next: N
   if(!authToken) return response.status(401).end();
 
   try {
-    const {sub} = verify(authToken,"69a80d081c6b251a81dab43a2bae95ee") as IPayload;
+    const info = verify(authToken,"69a80d081c6b251a81dab43a2bae95ee") as IPayload;
 
-    request.user_id = sub;
+    request.info = info;
 
     return next();
   } catch (error) {

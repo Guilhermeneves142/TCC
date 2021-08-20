@@ -5,8 +5,8 @@ class DoencaController {
 
   async findAll(request: Request, response: Response) {
     const doencaService = new DoencaService();
-
-    const doenca = await doencaService.findAll();
+    
+    const doenca = await doencaService.findAll(request.info.consultorio.id);
     return response.json(doenca);
   }
 

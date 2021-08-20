@@ -10,8 +10,10 @@ class Doenca {
     @JoinColumn({ name: 'id_consultorio' })
     @ManyToOne(() => Consultorio)
     consultorio: Consultorio;
-    @ManyToMany(() => Alimento, () => Doenca)
-    @JoinTable()
+    @ManyToMany(() => Alimento, alimento => alimento.id)
+    @JoinTable({name: "alimento_restrito", 
+    joinColumn: {name: "id_doenca",referencedColumnName: "id"},
+     inverseJoinColumn: {name: "id_alimento",referencedColumnName: "id"}})
     alimentos: Alimento[];
     @Column()
     nome: string;

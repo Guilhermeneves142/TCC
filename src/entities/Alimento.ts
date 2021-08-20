@@ -10,7 +10,7 @@ class Alimento {
     @JoinColumn({ name: 'id_consultorio' })
     @ManyToOne(() => Consultorio)
     consultorio: Consultorio;
-    @ManyToMany(() => Doenca, () => Alimento)
+    @ManyToMany(() => Doenca, doenca => doenca.id)
     @JoinTable()
     doencas: Doenca[];
     @Column()
