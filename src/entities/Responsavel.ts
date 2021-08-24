@@ -17,8 +17,6 @@ class Responsavel {
     celular: string;
     @Column()
     endereco: string;
-    @Column({name:"grau_parentesco"})
-    grauParentesco: string;
 
     constructor() {
         if(!this.id){
