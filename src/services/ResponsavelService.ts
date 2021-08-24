@@ -1,14 +1,23 @@
 import { getCustomRepository } from "typeorm";
+import { Responsavel } from "../entities/Responsavel";
 import { ResponsavelRepository } from "../repositories/ResponsavelRepository";
 
 class ResponsavelService {
 
-  async findAll(){
+  async findAll(id: string){
     const responsavelRepository = getCustomRepository(ResponsavelRepository);
 
-    const responsavel = await responsavelRepository.find();
+    return responsavelRepository.find({id});
+  }
 
-    return responsavel;
+  async create(responsavel: Responsavel) {
+    const responsavelRepository = getCustomRepository(ResponsavelRepository);
+
+    var newResponsavel = responsavelRepository.create(responsavel);
+
+    await responsavelRepository.save(newResponsavel);
+
+    return newResponsavel;
   }
 }
 

@@ -40,10 +40,6 @@ export class CreateResponsavel1624668940813 implements MigrationInterface {
             name: "endereco",
             type: "varchar",
             isNullable: true
-          },
-          {
-            name: "grau_parentesco",
-            type: "varchar"
           }
         ]
       }));    

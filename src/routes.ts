@@ -65,6 +65,7 @@ router.get("/objetivo/:idObjetivo",objetivoController.findById)
 router.post("/objetivo",objetivoController.createObjetivo)
 //PACIENTE
 router.get("/paciente/findAll", pacienteController.findAll)
+router.post("/paciente/create",pacienteController.createPaciente)
 //PLANO ALIMENTAR
 router.get("/planoAlimentar/findAll", planoAlimentarController.findAll)
 //REFEICAO
@@ -72,5 +73,6 @@ router.get("/refeicao/findAll", refeicaoController.findAll)
 router.get("/refeicao", refeicaoController.createRefeicao)
 //RESPONSAVEL
 router.get("/responsavel/findAll", responsavelController.findAll)
+router.post("/response/create",responsavelController.createResponsavel)
 
 export {router};

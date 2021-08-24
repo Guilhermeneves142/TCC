@@ -1,14 +1,23 @@
 import { getCustomRepository } from "typeorm";
+import { Paciente } from "../entities/Paciente";
 import { PacienteRepository } from "../repositories/PacienteRepository";
 
 class PacienteService {
 
-  async findAll(){
+  async findAll(idConsultorio: string){
     const pacienteRepository = getCustomRepository(PacienteRepository);
 
-    const paciente = await pacienteRepository.find();
+    return pacienteRepository.find({id: idConsultorio});
+  }
 
-    return paciente;
+  async create(paciente: Paciente) {
+    const pacienteRepository = getCustomRepository(PacienteRepository);
+
+    var newPaciente = pacienteRepository.create(paciente);
+
+    await pacienteRepository.save(newPaciente);
+
+    return newPaciente;
   }
 }
 
