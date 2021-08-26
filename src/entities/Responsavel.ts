@@ -1,10 +1,14 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Consultorio } from "./Consultorio";
 
 @Entity("responsavel")
 class Responsavel {
     @PrimaryColumn()
     readonly id: string;
+    @JoinColumn({name: "id_consultorio"})
+    @ManyToOne(()=> Consultorio)
+    consultorio: Consultorio;
     @Column()
     nome: string;
     @Column()

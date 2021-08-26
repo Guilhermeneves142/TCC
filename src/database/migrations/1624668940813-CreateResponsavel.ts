@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class CreateResponsavel1624668940813 implements MigrationInterface {
 
@@ -11,6 +11,10 @@ export class CreateResponsavel1624668940813 implements MigrationInterface {
             name: "id",
             type: "uuid",
             isPrimary: true
+          },
+          {
+            name: "id_consultorio",
+            type: "uuid"
           },
           {
             name: "nome",
@@ -41,11 +45,21 @@ export class CreateResponsavel1624668940813 implements MigrationInterface {
             type: "varchar",
             isNullable: true
           }
+        ],
+        foreignKeys: [
+          new TableForeignKey({
+            name: "FKConsultorio",
+            columnNames: ["id_consultorio"],
+            referencedColumnNames: ["id"],
+            referencedTableName: "consultorio",
+            onDelete: "CASCADE"
+          })
         ]
       }));    
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey("responsavel","FKConsultorio")
     await queryRunner.dropTable("responsavel")
   }
 

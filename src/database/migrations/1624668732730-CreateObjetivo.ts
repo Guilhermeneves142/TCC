@@ -27,7 +27,7 @@ export class CreateObjetivo1624668732730 implements MigrationInterface {
           ],
           foreignKeys: [
             {
-              name: "fk_nutricionista_id",
+              name: "fk_consultorio_id",
               columnNames: ['id_consultorio'],
               referencedTableName: 'consultorio',
               referencedColumnNames: ['id'],
@@ -39,6 +39,7 @@ export class CreateObjetivo1624668732730 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+      await queryRunner.dropForeignKey("objetivo","fk_consultorio_id");
       await queryRunner.dropTable("objetivo");
     }
 
