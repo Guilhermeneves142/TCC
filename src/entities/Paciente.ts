@@ -17,8 +17,10 @@ class Paciente {
     responsavel: Responsavel;
     @OneToOne(() => Antropometrico, () => Paciente)
     antropometrico: Antropometrico
-    @ManyToMany(() => Objetivo)
-    @JoinTable()
+    @ManyToMany(() => Objetivo, objetivo => objetivo.id)
+    @JoinTable({name: "objetivo_paciente", 
+    joinColumn: {name: "id_paciente",referencedColumnName: "id"},
+     inverseJoinColumn: {name: "id_objetivo",referencedColumnName: "id"}})
     objetivos: Objetivo[];
     @Column()
     nome: string;

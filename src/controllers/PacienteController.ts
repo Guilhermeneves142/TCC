@@ -12,13 +12,13 @@ class PacienteController {
 
   async createPaciente(request: Request, response: Response) {
     try {
-    const newPaciente = request.body;
+    const {paciente, responsavel} = request.body;
 
     const pacienteService = new PacienteService();
 
-    const paciente = await pacienteService.create(newPaciente);
+    const newPaciente = await pacienteService.create(paciente,responsavel);
 
-    return response.json(paciente);
+    return response.json(newPaciente);
     }
     catch(error) {
       return response.status(500).json({

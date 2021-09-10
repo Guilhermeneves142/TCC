@@ -49,7 +49,7 @@ export class CreatePaciente1624668721585 implements MigrationInterface {
           },
           {
             name: "genero",
-            type: "char",
+            type: "varchar",
             isNullable: true
           }
           ]
