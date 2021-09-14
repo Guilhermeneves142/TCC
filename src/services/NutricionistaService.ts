@@ -11,7 +11,7 @@ class NutricionistaService {
     const nutricionistaRepository = getCustomRepository(NutricionistaRepository);
 
 
-    if(!nutricionista.cpf || !nutricionista.crn || !nutricionista.nome || !nutricionista.senha)
+    if(!nutricionista.cpf || !nutricionista.nome || !nutricionista.senha)
       throw new Error("Campos obrigatórios estão vázios");
 
     const nutricionistaAlreadyExists = await nutricionistaRepository.findOne({cpf:nutricionista.cpf});

@@ -47,12 +47,12 @@ export class CreateNutricionista1624491823291 implements MigrationInterface {
         },
         {
           name: "inicio_expediente",
-          type: "timestamp",
+          type: "varchar",
           isNullable: true
         },
         {
           name: "fim_expediente",
-          type: "timestamp",
+          type: "varchar",
           isNullable: true
         }
         ],

@@ -32,8 +32,9 @@ const planoAlimentarController = new PlanoAlimentarController();
 const refeicaoController = new RefeicaoController();
 const responsavelController = new ResponsavelController();
 
-// AUTHENTICAÇÃO
+// NÃO PRECISA DE AUTENTICAÇÃO
 router.post("/login",authenticateController.login);
+router.post("/nutricionista", nutricionistaController.createNutricionista)
 router.use(ensureAuthenticate)
 
 router.get("/clarify",authenticateController.clarifyToken);
@@ -41,7 +42,6 @@ router.get("/clarify",authenticateController.clarifyToken);
 router.post("/consultorio", consultorioController.createConsultorio)
 router.get("/consultorio/findAll", consultorioController.findAll)
 // NUTRICIONISTA
-router.post("/nutricionista", nutricionistaController.createNutricionista)
 router.get("/nutricionista/findAll", nutricionistaController.findAll)
 router.get("/nutricionista/findById/:idNutricionista", nutricionistaController.findById)
 router.post("/nutricionista/bindConsultorio", consultorioController.bindNutricionistaWithCOnsultorio)

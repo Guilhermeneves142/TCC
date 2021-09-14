@@ -22,9 +22,9 @@ class Nutricionista {
   @Column()
   senha: string;
   @Column({name:"inicio_expediente"})
-  inicioExpediente: number;
+  inicioExpediente: string;
   @Column({name:"fim_expediente"})
-  fimExpediente: number;
+  fimExpediente: string;
 
   constructor() {
     if(!this.id){

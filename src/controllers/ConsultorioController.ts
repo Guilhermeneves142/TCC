@@ -9,7 +9,7 @@ class ConsultorioController {
     const consultorioService = new ConsultorioService();
     const nutricionistaService = new NutricionistaService();
     const consultorioCreated = await consultorioService.createConsultorio(consultorio);
-    nutricionistaService.setConsultorio(idNutricionista, consultorio.id);
+    nutricionistaService.setConsultorio(idNutricionista, consultorioCreated.id);
     return response.json(consultorioCreated);
   }
 
