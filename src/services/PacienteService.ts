@@ -11,6 +11,11 @@ class PacienteService {
     return pacienteRepository.find({consultorio: {id: idConsultorio}});
   }
 
+  async findById(idPaciente: string) {
+    const pacienteRepository = getCustomRepository(PacienteRepository);
+    return pacienteRepository.findOne(idPaciente);
+  }
+
   async create(paciente: Paciente, responsavel: Responsavel) {
     const pacienteRepository = getCustomRepository(PacienteRepository);
     const responsavelRepository = getCustomRepository(ResponsavelRepository);

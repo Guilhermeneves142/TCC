@@ -64,6 +64,7 @@ router.get("/objetivo/findAll", objetivoController.findAll)
 router.get("/objetivo/:idObjetivo",objetivoController.findById)
 router.post("/objetivo",objetivoController.createObjetivo)
 //PACIENTE
+router.get("/paciente/findById/:idPaciente", pacienteController.findById)
 router.get("/paciente/findAll", pacienteController.findAll)
 router.post("/paciente/create",pacienteController.createPaciente)
 //PLANO ALIMENTAR

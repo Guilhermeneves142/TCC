@@ -10,6 +10,13 @@ class PacienteController {
     return response.json(paciente);
   }
 
+  async findById(request: Request, response: Response){
+    const pacienteService = new PacienteService();
+
+    const paciente = await pacienteService.findById(request.params.idPaciente);
+    return response.json(paciente);
+  }
+
   async createPaciente(request: Request, response: Response) {
     try {
     const {paciente, responsavel} = request.body;
