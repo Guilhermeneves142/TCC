@@ -18,7 +18,7 @@ class PacienteController {
   }
 
   async createPaciente(request: Request, response: Response) {
-    try {
+    // try {
     const {paciente, responsavel} = request.body;
 
     const pacienteService = new PacienteService();
@@ -26,13 +26,13 @@ class PacienteController {
     const newPaciente = await pacienteService.create(paciente,responsavel);
 
     return response.json(newPaciente);
-    }
-    catch(error) {
-      return response.status(500).json({
-        error: "internal server error",
-        status: 500
-      }) 
-    }
+    // }
+    // catch(error) {
+    //   return response.status(500).json({
+    //     error: "internal server error",
+    //     status: 500
+    //   }) 
+    // }
   }
 }
 

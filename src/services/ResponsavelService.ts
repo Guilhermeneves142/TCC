@@ -7,7 +7,7 @@ class ResponsavelService {
   async findAll(id: string){
     const responsavelRepository = getCustomRepository(ResponsavelRepository);
 
-    return responsavelRepository.find({id});
+    return responsavelRepository.find({consultorio: {id: id}});
   }
 
   async create(responsavel: Responsavel) {

@@ -71,7 +71,7 @@ router.post("/paciente/create",pacienteController.createPaciente)
 router.get("/planoAlimentar/findAll", planoAlimentarController.findAll)
 //REFEICAO
 router.get("/refeicao/findAll", refeicaoController.findAll)
-router.get("/refeicao", refeicaoController.createRefeicao)
+router.post("/refeicao", refeicaoController.createRefeicao)
 //RESPONSAVEL
 router.get("/responsavel/findAll", responsavelController.findAll)
 router.post("/response/create",responsavelController.createResponsavel)

@@ -13,16 +13,15 @@ class PacienteService {
 
   async findById(idPaciente: string) {
     const pacienteRepository = getCustomRepository(PacienteRepository);
-    return pacienteRepository.findOne(idPaciente);
+    return pacienteRepository.findOne(idPaciente, {relations: ["consultorio", "objetivos", "responsavel"]});
   }
 
   async create(paciente: Paciente, responsavel: Responsavel) {
     const pacienteRepository = getCustomRepository(PacienteRepository);
     const responsavelRepository = getCustomRepository(ResponsavelRepository);
-
     if(responsavel){
       var newResponsavel = responsavelRepository.create(responsavel);
-      await responsavelRepository.save(newPaciente);
+      await responsavelRepository.save(newResponsavel);
       paciente.responsavel = newResponsavel;
     }
     var newPaciente = pacienteRepository.create(paciente);

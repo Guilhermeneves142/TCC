@@ -14,7 +14,8 @@ export class CreateObjetivo1624668732730 implements MigrationInterface {
           },
           {
             name: "id_consultorio",
-            type: "uuid"
+            type: "uuid",
+            isNullable: true
           },
           {
             name: "nome",
@@ -23,7 +24,12 @@ export class CreateObjetivo1624668732730 implements MigrationInterface {
           {
             name: "descricao",
             type: "varchar"
-          }
+          },
+          {
+            name: "default",
+            type: "bool",
+            default: true
+          },
           ],
           foreignKeys: [
             {

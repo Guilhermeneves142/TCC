@@ -15,11 +15,17 @@ export class CreatePlanoAlimentar1624668955150 implements MigrationInterface {
                 },
                 {
                     name: "id_consultorio",
-                    type: "uuid"
+                    type: "uuid",
+                    isNullable: true
                 },
                 {
                     name: "nome",
                     type: "varchar"
+                },
+                {
+                    name: "default",
+                    type: "bool",
+                    default: "true"
                 }
                 ]
             })
