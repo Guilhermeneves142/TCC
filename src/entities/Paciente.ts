@@ -2,6 +2,7 @@ import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne,
 import { v4 as uuid } from "uuid";
 import { Antropometrico } from "./Antropometrico";
 import { Consultorio } from "./Consultorio";
+import { Doenca } from "./Doenca";
 import { Objetivo } from "./Objetivo";
 import { Responsavel } from "./Responsavel";
 
@@ -15,6 +16,11 @@ class Paciente {
     @JoinColumn({ name: 'id_responsavel' })
     @ManyToOne(() => Responsavel)
     responsavel: Responsavel;
+    @ManyToMany(() => Doenca, doenca => doenca.id)
+    @JoinTable({name: "patologias", 
+    joinColumn: {name: "id_paciente",referencedColumnName: "id"},
+     inverseJoinColumn: {name: "id_doenca",referencedColumnName: "id"}})
+    doencas: Doenca[];
     @OneToOne(() => Antropometrico, () => Paciente)
     antropometrico: Antropometrico
     @ManyToMany(() => Objetivo, objetivo => objetivo.id)

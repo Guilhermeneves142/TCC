@@ -6,10 +6,10 @@ export class FKPatologia1625182831957 implements MigrationInterface {
     await queryRunner.createForeignKeys("patologias",
     [
       new TableForeignKey({
-        name: "FKAnamneses",
-        columnNames: ["id_anamneses"],
+        name: "FKPaciente",
+        columnNames: ["id_paciente"],
         referencedColumnNames: ["id"],
-        referencedTableName: "anamneses",
+        referencedTableName: "paciente",
         onDelete: "SET NULL"
       }),
       new TableForeignKey({
@@ -23,7 +23,7 @@ export class FKPatologia1625182831957 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey("patologias", "FKAnamneses");
+    await queryRunner.dropForeignKey("patologias", "FKPaciente");
     await queryRunner.dropForeignKey("patologias", "FKDoenca");
   }
 

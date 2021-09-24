@@ -13,7 +13,7 @@ class PacienteService {
 
   async findById(idPaciente: string) {
     const pacienteRepository = getCustomRepository(PacienteRepository);
-    return pacienteRepository.findOne(idPaciente, {relations: ["consultorio", "objetivos", "responsavel"]});
+    return pacienteRepository.findOne(idPaciente, {relations: ["consultorio", "objetivos", "responsavel", "doencas"]});
   }
 
   async create(paciente: Paciente, responsavel: Responsavel) {

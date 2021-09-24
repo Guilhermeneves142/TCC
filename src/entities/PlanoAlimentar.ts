@@ -1,17 +1,22 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { Consultorio } from "./Consultorio";
-import { Refeicao } from "./Refeicao";
+import { PlanoAlimentarRefeicao } from "./PlanoAlimentarRefeicao"
 import { v4 as uuid } from "uuid";
 
 @Entity("plano_alimentar")
 class PlanoAlimentar {
   @PrimaryColumn()
-  readonly id: string;
+  id: string;
   @JoinColumn({ name: 'id_consultorio' })
   @ManyToOne(() => Consultorio)
   consultorio: Consultorio;
   @Column()
   nome: string;
+  @OneToMany(() => PlanoAlimentarRefeicao, planoAlimentarRefeicao => planoAlimentarRefeicao.planoAlimentar.id, {
+    cascade: true
+})
+  @JoinColumn({name: "id_plano_alimentar"})
+  refeicoes: PlanoAlimentarRefeicao[];
   
   constructor() {
     if(!this.id){

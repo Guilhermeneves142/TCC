@@ -22,7 +22,7 @@ export class CreatePlanoAlimentarRefeicao1624668977762 implements MigrationInter
           },
           {
             name: "horario",
-            type: "timestamp"
+            type: "varchar"
           },
         ]
       })

@@ -12,13 +12,15 @@ class PlanoAlimentarRefeicao {
   @ManyToOne(() => Refeicao)
   refeicao: Refeicao;
   @JoinColumn({ name: 'id_plano_alimentar' })
-  @ManyToOne(() => PlanoAlimentar)
+  @ManyToOne(() => PlanoAlimentar, planoAlimentar => planoAlimentar.id)
   planoAlimentar: PlanoAlimentar;
   @ManyToMany(() => Alimento)
-  @JoinTable()
+  @JoinTable({name: "alimento_refeicao", 
+  joinColumn: {name: "id_plano_alimentar_refeicao",referencedColumnName: "id"},
+   inverseJoinColumn: {name: "id_alimento",referencedColumnName: "id"}})
   alimentos: Alimento[]
   @Column()
-  horario: Date;
+  horario: string;
   
   constructor() {
     if(!this.id){
@@ -27,4 +29,4 @@ class PlanoAlimentarRefeicao {
   }
 }
 
-export { PlanoAlimentar };
+export { PlanoAlimentarRefeicao };
