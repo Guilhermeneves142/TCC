@@ -2,6 +2,8 @@ import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryCo
 import { v4 as uuid } from "uuid";
 import { Consultorio } from "./Consultorio";
 import { Doenca } from "./Doenca";
+import { PlanoAlimentarRefeicao } from "./PlanoAlimentarRefeicao";
+import { Refeicao } from "./Refeicao";
 
 @Entity("alimento")
 class Alimento {
@@ -57,6 +59,11 @@ class Alimento {
     niacina: number;
     @Column()
     default: boolean;
+    @ManyToMany(() => PlanoAlimentarRefeicao,planoAlimentarRefeicao => planoAlimentarRefeicao.alimentos)
+    @JoinTable({name: "alimento_refeicao", 
+    joinColumn: {name: "id_alimento",referencedColumnName: "id"},
+     inverseJoinColumn: {name: "id_plano_alimentar_refeicao",referencedColumnName: "id"}})
+    refeicoes: Refeicao[]
 
     constructor() {
         if(!this.id){

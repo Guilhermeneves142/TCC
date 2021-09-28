@@ -8,17 +8,22 @@ import { Alimento } from "./Alimento";
 class PlanoAlimentarRefeicao {
   @PrimaryColumn()
   readonly id: string;
+
   @JoinColumn({ name: 'id_refeicao' })
-  @ManyToOne(() => Refeicao)
+  @ManyToOne(() => Refeicao, refeicao => refeicao.id,{eager: true, persistence: true})
   refeicao: Refeicao;
-  @JoinColumn({ name: 'id_plano_alimentar' })
-  @ManyToOne(() => PlanoAlimentar, planoAlimentar => planoAlimentar.id)
+
+  @JoinColumn({ name: 'id_plano_alimentar'})
+  @ManyToOne(() => PlanoAlimentar, planoAlimentar => planoAlimentar.id, 
+  {cascade: true,lazy:true,persistence:true})
   planoAlimentar: PlanoAlimentar;
-  @ManyToMany(() => Alimento)
+
+  @ManyToMany(() => Alimento,alimento => alimento.refeicoes,{eager: true, cascade: true, persistence: true})
   @JoinTable({name: "alimento_refeicao", 
   joinColumn: {name: "id_plano_alimentar_refeicao",referencedColumnName: "id"},
    inverseJoinColumn: {name: "id_alimento",referencedColumnName: "id"}})
   alimentos: Alimento[]
+
   @Column()
   horario: string;
   

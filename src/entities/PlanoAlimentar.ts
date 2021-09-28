@@ -7,15 +7,16 @@ import { v4 as uuid } from "uuid";
 class PlanoAlimentar {
   @PrimaryColumn()
   id: string;
+
   @JoinColumn({ name: 'id_consultorio' })
   @ManyToOne(() => Consultorio)
   consultorio: Consultorio;
+
   @Column()
   nome: string;
-  @OneToMany(() => PlanoAlimentarRefeicao, planoAlimentarRefeicao => planoAlimentarRefeicao.planoAlimentar.id, {
-    cascade: true
-})
-  @JoinColumn({name: "id_plano_alimentar"})
+  
+  @OneToMany(() => PlanoAlimentarRefeicao, planoAlimentarRefeicao => planoAlimentarRefeicao.planoAlimentar)
+  @JoinColumn({name: "id_plano_alimentar",referencedColumnName: "id_plano_alimentar"})
   refeicoes: PlanoAlimentarRefeicao[];
   
   constructor() {
