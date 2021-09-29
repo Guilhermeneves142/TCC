@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, TableForeignKey} from "typeorm";
+import {MigrationInterface, QueryRunner, TableForeignKey, TableUnique} from "typeorm";
 
 export class FKAlimentoRefeicao1625182772914 implements MigrationInterface {
 
@@ -20,6 +20,15 @@ export class FKAlimentoRefeicao1625182772914 implements MigrationInterface {
         onDelete: "SET NULL"
       })
     ])
+    await queryRunner.createUniqueConstraint("alimento_refeicao", 
+      new TableUnique({
+        columnNames: [
+          "id_plano_alimentar_refeicao", 
+          "id_alimento"
+        ],
+        name: "Unique_alimento_refeicao"
+      })
+    )
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

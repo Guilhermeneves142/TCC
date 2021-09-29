@@ -1,4 +1,5 @@
 import { Request, Response} from "express";
+import { PlanoAlimentar } from "../entities/PlanoAlimentar";
 import { PlanoAlimentarService } from "../services/PlanoAlimentarService";
 
 class PlanoAlimentarController {
@@ -33,17 +34,22 @@ class PlanoAlimentarController {
   }
 
   async save(request: Request, response: Response) {
-    // try {
-    const planoAlimentarService = new PlanoAlimentarService();
-    const planoAlimentar = await planoAlimentarService.save(request.body);
-    return response.json(planoAlimentar);
-    // }
-    // catch (error)  {
-    //   return response.status(500).json({
-    //     error: "internal server error",
-    //     status: 500
-    //   }) 
-    // }
+    try {
+      const planoAlimentarService = new PlanoAlimentarService();
+      const planoAlimentarNew = (request.body as PlanoAlimentar);
+      let planoAlimentar = null;
+      if(planoAlimentarNew.id != null)
+        planoAlimentar = await planoAlimentarService.update(planoAlimentarNew);
+      else 
+        planoAlimentar = await planoAlimentarService.save(planoAlimentarNew);
+      return response.json(planoAlimentar);
+    }
+    catch (error)  {
+      return response.status(500).json({
+        error: "internal server error",
+        status: 500
+      }) 
+    }
   }
 }
 
