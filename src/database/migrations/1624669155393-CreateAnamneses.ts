@@ -18,7 +18,7 @@ export class CreateAnamneses1624669155393 implements MigrationInterface {
           },
           {
             name: "data",
-            type: "timestamp"
+            type: "varchar"
           },
           {
             name: "alcool",

@@ -18,7 +18,7 @@ class Anamneses {
   @JoinTable()
   patologias: Doenca[];
   @Column()
-  data: Date;
+  data: string;
   @Column()
   alcool: string;
   @Column()

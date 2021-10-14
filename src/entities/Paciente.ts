@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Antropometrico } from "./Antropometrico";
+import { Atendimento } from "./Atendimento";
 import { Consultorio } from "./Consultorio";
 import { Doenca } from "./Doenca";
 import { Objetivo } from "./Objetivo";
@@ -40,6 +41,8 @@ class Paciente {
     dataNascimento: Date;
     @Column()
     genero: string;
+    @OneToMany(() => Atendimento, atendimento => atendimento.paciente)
+    atendimento: Atendimento[];
 
     constructor() {
         if(!this.id){

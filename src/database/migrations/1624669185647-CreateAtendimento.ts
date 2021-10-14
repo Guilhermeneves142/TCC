@@ -22,8 +22,8 @@ export class CreateAtendimento1624669185647 implements MigrationInterface {
           },
           {
             name: "data_atendimento",
-            type: "timestamp",
-            default: "now()"
+            type: "varchar",
+            default: "cast(now() as varchar)"
           }
         ]
       })

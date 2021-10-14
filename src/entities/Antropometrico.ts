@@ -1,16 +1,17 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Atendimento } from "./Atendimento";
 import { Paciente } from "./Paciente";
 
 @Entity("antropometrico")
 class Antropometrico {
   @PrimaryColumn()
   readonly id: string;
-  @OneToOne(() => Paciente, () => Antropometrico)
-  @JoinColumn({name: "id_paciente"})
-  paciente: Paciente;
+  @OneToOne(() => Atendimento)
+  @JoinColumn({name: "id_atendimento"})
+  atendimento: Atendimento;
   @Column()
-  data: Date;
+  data: string;
   @Column()
   idade: number;
   @Column()

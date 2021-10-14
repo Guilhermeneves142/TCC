@@ -3,7 +3,6 @@ import { PlanoAlimentar } from "../entities/PlanoAlimentar";
 import { PlanoAlimentarRepository } from "../repositories/PlanoAlimentarRepository";
 import { v4 as uuid } from "uuid";
 import { PlanoAlimentarRefeicao } from "../entities/PlanoAlimentarRefeicao";
-import { Consultorio } from "../entities/Consultorio";
 
 class PlanoAlimentarService {
 

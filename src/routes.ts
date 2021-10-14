@@ -54,6 +54,7 @@ router.get("/anamneses/findAll", anamnesesController.findAll)
 router.get("/antropometrico/findAll", antropometricoController.findAll)
 //ATENDIMENTO
 router.get("/atendimento/findAll", atendimentoController.findAll)
+router.post("/atendimento", atendimentoController.create)
 //DOENCA
 router.post("/doenca", doencaController.createDoenca)
 router.get("/doenca/findAll", doencaController.findAll)

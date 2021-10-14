@@ -20,11 +20,23 @@ export class FKAtendimento1625182868762 implements MigrationInterface {
                 onDelete: "SET NULL"
             })
         ])
+
+        await queryRunner.createForeignKeys("antropometrico",
+        [
+            new TableForeignKey(        {
+                name: "FKAtendimento",
+                columnNames: ["id_atendimento"],
+                referencedColumnNames: ["id"],
+                referencedTableName: "atendimento",
+                onDelete: "SET NULL"
+              }),
+        ])
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey("atendimento", "FKPaciente");
         await queryRunner.dropForeignKey("atendimento", "FKPlanoAlimentar");
+        await queryRunner.dropForeignKey("antropometrico", "FKAtendimento");
     }
 
 }
