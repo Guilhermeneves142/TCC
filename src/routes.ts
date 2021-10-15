@@ -55,6 +55,7 @@ router.get("/antropometrico/findAll", antropometricoController.findAll)
 //ATENDIMENTO
 router.get("/atendimento/findAll", atendimentoController.findAll)
 router.post("/atendimento", atendimentoController.create)
+router.get("/atendimento/dataToHistoric/:idPaciente", atendimentoController.findDataToHistoric)
 //DOENCA
 router.post("/doenca", doencaController.createDoenca)
 router.get("/doenca/findAll", doencaController.findAll)

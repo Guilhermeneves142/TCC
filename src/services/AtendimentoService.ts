@@ -2,8 +2,6 @@ import { getConnection, getCustomRepository } from "typeorm";
 import { Atendimento } from "../entities/Atendimento";
 import { AtendimentoRepository } from "../repositories/AtendimentoRepository";
 import { v4 as uuid } from "uuid";
-import { AnamnesesRepository } from "../repositories/AnamnesesRepository";
-import { AntropometricoRepository } from "../repositories/AntropometricoRepository";
 import { Anamneses } from "../entities/Anamneses";
 import { Antropometrico } from "../entities/Antropometrico";
 
@@ -56,6 +54,14 @@ class AtendimentoService {
     }
 
     return atendimentoRepository.findOne(idAtendimento, {relations: ["planoAlimentar",'anamneses','antropometrico']});
+  }
+
+  async findDataToHistoric(idPaciente: string) {
+    const atendimentoRepository = getCustomRepository(AtendimentoRepository);
+
+    const atendimentos = await atendimentoRepository.find({where: {paciente: {id : idPaciente}},relations: ["anamneses","planoAlimentar","antropometrico","paciente"]});
+
+    return atendimentos;
   }
 }
 
