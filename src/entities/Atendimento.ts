@@ -21,6 +21,8 @@ class Atendimento {
   planoAlimentar: PlanoAlimentar;
   @Column({name:"data_atendimento"})
   dataAtendimento: string;
+  @Column()
+  createdOn: number;
 
   constructor() {
     if(!this.id){
