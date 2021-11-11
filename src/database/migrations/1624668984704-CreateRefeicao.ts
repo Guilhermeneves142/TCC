@@ -19,7 +19,8 @@ export class CreateRefeicao1624668984704 implements MigrationInterface {
           },
           {
             name: "nome",
-            type: "varchar"
+            type: "varchar",
+            isUnique: true
           },
           {
             name: "default",

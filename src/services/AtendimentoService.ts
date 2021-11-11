@@ -63,6 +63,16 @@ class AtendimentoService {
 
     return atendimentos;
   }
+
+
+  async findLastAtendimento(idPaciente: string) {
+    const atendimentoRepository = getCustomRepository(AtendimentoRepository);
+
+    const atendimento = await atendimentoRepository.findOne({where: {paciente: {id : idPaciente}},order: {createdOn: "DESC"},
+      relations: ["anamneses","planoAlimentar","antropometrico","paciente"]});
+
+    return atendimento;
+  }
 }
 
 export {AtendimentoService};
